@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+	<!-- Title -->
+	<title>Monitor+ API</title>
+
+	<!-- JS Files -->
+
+	<script src="resources/js/jquery-1.12.3.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/bootstrap-dropdown.js"></script>
+	<script src="dev/api/config/config.js"></script>
+	<script src="dev/api/authentication.js"></script>
+	<script src="resources/js/jquery.ihavecookies.min.js"></script>
+	<script src="resources/js/top-menu.js"></script>
+	<script src="resources/js/home.js"></script>
+	<script src="resources/js/messages.js"></script>
+	<script src="resources/js/common.js"></script>
+	<script src="resources/js/goto_homepage.js"></script>
+
+	<!-- CSS Files -->
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800,800i"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,500i,600,600i,700,700i,800"
+		rel="stylesheet">
+	<link href="resources/idm-service/resources/css/font-awesome.min.css" rel="stylesheet">
+	<link href="resources/idm-service/resources/css/bootstrap-navbar.css" rel="stylesheet">
+	<link href="resources/idm-service/resources/css/main.css" rel="stylesheet">
+	<link href="resources/idm-service/resources/css/responsive.css" rel="stylesheet">
+	<link href="resources/css/bootstrap-navbar.css" rel="stylesheet">
+	<link href="resources/css/main.css" rel="stylesheet">
+	<link href="resources/css/general.css" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="resources/api_favicon.png">
+	<link rel="stylesheet" href="resources/css/r-package.css">
+
+	<style>
+		section.main-content {
+			margin-top: 105px;
+			padding: 32px;
+		}
+
+		section.main-content .info-monitor .blue-title {
+			color: rgb(26, 101, 187);
+			font-size: large;
+		}
+
+		section.main-content .top-logo {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: flex-start;
+			margin-bottom: 60px;
+		}
+
+		section.main-content .top-logo .monitor img {
+			margin-top: 35px;
+		}
+
+		section.main-content .top-logo .monitor .market {
+			margin-left: 129px;
+		}
+
+		.blue-title {
+			color: black !important;
+		}
+	</style>
+</head>
+
+<body class="default">
+	<div class="fixpage">
+
+		<div include-html="menu.html" id="menu_file"></div>
+		
+
+		<section class="main-content dis-block clearfix">
+			<h1 style="text-align: left; color: black; font-weight: 600;">Installing the Monitor+ “R” package </h1>
+
+
+
+			<div class="info-monitor">
+				<div class="blue-title">Introduction.</div><br>
+				<p>The package can be downloaded by registered users from the link below. If the link is greyed out you
+					should login using the ‘Login’ menu above. The package is installed from a “tar” file and requires
+					the “HTTR”, “R6” and “JSONLITE” packages to be installed prior to use. The “HTTR” package allows
+					direct communications with the Monitor+ API, the “R6” provides data classes used in the package and
+					JSONLITE allows easy use of the JSON script in “R”.</p><br>
+				<p>Both “R” and its packages are downloaded from the <a href=""
+						style="text-decoration: underline;">CRAN</a> web site using the “Software” menu on the left of
+					the web page.</p>
+
+				<br>
+
+
+				<div class="blue-title">Installing the package</div><br>
+				<p>After installing the three packages above, download the Monitor+ installation file
+					idmmonitor_0.2.7.tar and save it in a location that is easily accessible when installing it into
+					“R”. </p>
+				<p><strong>From R Studio:</strong> Select the “Install” option from the packages tab (below), change
+					“Install from” menu option to “Package Archive file” type. Next click on the “Browse” button to
+					select the saved Monitor+ installation and then click the “Install” button to begin.</p>
+				<div id="gp-img">
+					<img src="resources/images/install-r-package.png" alt="" style="height: 400px;">
+				</div>
+				<p> <strong> To manually install: </strong> Launch R to the R command prompt <br>
+					Type: install.packages(<path_to_tar.gz_file>, repos = NULL) <br>
+						E.g: install.packages("C:\idm-r\idmmonitor_0.2.0.tar", repos = NULL)
+				</p>
+
+				<br>
+
+				<div class="blue-title">Testing the package</div><br>
+				<p>Once the four packages have been installed (see above), you are ready to begin testing. You will need
+					your Monitor+ API key to complete this next stage. You should have received your API key from us via
+					email. If you have a problem locating the API key, you can access your API key by logging into
+					https://www.idatamedia.org and viewing your account.</p>
+
+				<p>To begin you need to enable the ‘idmmonitor’ package, register your API key and get a session token
+					from the remote API server. You need to type the three commands below to achieve this. The commands
+					you must type are in black text below, comments are in green text and results from the server are in
+					blue. </p>
+
+				<br>
+
+				<div id="text_under_testing-package">
+					<p class="green"># Enable the library</p>
+					> library(idmmonitor)
+					<p class="blue-para">Loading required package: R6 <br>
+						Loading required package: jsonlite <br>
+						Loading required package: httr
+					</p>
+					<br>
+
+					<p class="green"># Register your API key with the service</p>
+					> idata.set_api_key("XXXXX-XXXXX-XXXXX-XXXXX")
+					<p class="blue-para">Stored the new API key XXXXX-XXXXX-XXXXX-XXXXX.</p>
+					<br>
+					<p class="green"># Get a session token</p>
+					> idata.get_session_token()
+					<p class="blue-para">A new token 2b4a1038338c9b4234a1a8c5cc01ba3d has been set. <br>
+						<span style="color: black;">></span>
+					</p>
+
+					<p>Once you have successfully entered the commands above and have a “new” session token, you can
+						access the full service. As you can see from the example above, commands to the ‘idmmonitor’
+						package are prefixed with the text “idata.”. </p>
+
+					<p>You can use the commands below test access the server </p>
+
+					<p>>idata.query_session_token() <br>
+
+						<span class="blue-para">[1] 1796000</span>
+					</p>
+
+					<p>> idata.get_api_address() <br>
+						<span class="blue-para">The API server is set to https://api.idatamedia.org/</span>
+					</p>
+				</div><br>
+
+				<div class="blue-title">Testing the connection</div><br>
+				<p> You can quickly check that the connection to the Monitor+ API server is working. Open your browser
+					and enter the url <a href="">https://api.idatamedia.org/</a> and press enter. Your browser should
+					show a simple web page with one line of text similar to ”Monitor+ Web API Version: X.X”. </p>
+				<p>If you do not see this (or you see an error page), you may have a proxy or firewall issue that is
+					blocking the connection. Please contact your IT department and ask them to replicate the test above
+					and so enable access to the Monitor+ API server for you.</p>
+				<p>You should also try to connect to the web site where the API help files are stored. Open your browser
+					and enter the url <a href="">https://www.idatamedia.org/</a> and press enter. If you do not see the
+					IDM web site, please contact your IT department and ask them to replicate test above. They should be
+					able to quickly resolve the issue.</p>
+				<br>
+
+				<div class="blue-title">And Finally</div><br>
+				<p> For any other problems, please email <a href="">support@idatamedia.org</a> with a subject of
+					“Monitor+ R Package Support”. Please send your contact details, IDM reference number, API key, R
+					version number, any relevant screenshots and a description of the issue. We will do our utmost to
+					get a speedy resolution to the problem for you.</p>
+
+
+
+
+			</div>
+		</section>
+        
+		<div include-html="footer.html" id="footer_file"></div>
+		
+			<div class="text-center footertxt">
+				<p class="sub-logo"> Copyright © 2019 International Data Media Limited - Market Data Solutions </p>
+			</div>
+		</div>
+	</div>
+
+	<script src="resources/js/jquery-3.6.0.min.js"></script>
+	<script src="resources/js/include-html.js"></script>
+</body>
+
+</html>

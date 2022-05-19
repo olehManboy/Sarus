@@ -1,0 +1,132 @@
+
+
+.documentor-default .doc-search input{
+width: 370px;
+}
+
+
+
+.fixpage {
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+   
+}
+
+.api-left-col{
+   /* width: 42%; */
+ 
+margin-left: -30px;
+position: fixed; 
+
+height:620px;
+overflow-y: scroll;
+width: 350px;
+overflow-x: hidden;
+  
+}
+
+
+
+.navbar{
+    position: sticky;
+    top: 0%;
+    left: 0%;
+    z-index: 10;
+}
+
+.row{
+    width: 1024px !important;
+    display: block;
+}
+
+
+.main-content{
+    width: 100%;
+}
+
+.api-right-txt{
+    width: 100%;
+}
+.api-right-col{
+    margin-left: 37%;
+    width: 73%;
+}
+
+
+
+
+.table-bordered{
+    margin-left: 40px !important;
+}
+
+
+
+
+
+
+
+
+
+@media  screen and (max-width:1120px) {
+    .api-right-txt{
+        width: 100vw;
+        padding-right: 40px;
+       
+        
+    }
+
+    .api-left-col{
+        position: relative;
+        width: 100%;
+        right: 20px;
+        margin-left: 0px;
+        overflow-y: hidden;
+        height: min-content;
+        
+    }
+
+   
+
+    .api-right-col{
+        transform: translate(0%);
+        position: relative;
+        right: 10px;
+        margin-left: 0px;
+        width: 85%;
+        overflow-x: scroll;
+    
+    }
+
+
+    .fixpage{
+        
+        padding-left: 0px;
+    }
+    
+    .main-content{
+        width: 100%;
+        overflow-x: scroll;
+     
+    }
+
+    .documentor-default .doc-search input{
+        width: 250px;
+        }
+
+  
+
+
+     .table{
+         margin-left: 0px !important;
+     }
+
+
+     .api-article-table{
+        margin-left: 0px !important;
+     }
+     
+}
+
+
+

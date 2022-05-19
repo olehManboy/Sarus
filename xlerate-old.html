@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+	<!-- Title -->
+	<title>XLerate</title>
+
+	<!-- JS Files -->
+	<script src="resources/js/jquery-1.12.3.js"></script>
+	<script src="resources/js/jquery-3.6.0.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/bootstrap-dropdown.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-migrate-3.0.0.min.js"></script>
+	<script src="resources/js/jquery-ui.js"></script>
+	<script src="dev/api/config/config.js"></script>
+	<script src="dev/api/authentication.js"></script>
+	<script src="resources/js/jquery.ihavecookies.min.js"></script>
+	<script src="resources/js/top-menu.js"></script>
+	<script src="resources/js/home.js"></script>
+	<script src="resources/js/messages.js"></script>
+	<script src="resources/js/common.js"></script>
+	<script src="resources/js/goto_homepage.js"></script>
+
+
+	<!-- CSS Files -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,600i,700,700i,800,800i"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,500i,600,600i,700,700i,800"
+		rel="stylesheet">
+	<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+	<link href="resources/idm-service/resources/css/font-awesome.min.css" rel="stylesheet">
+	<link href="resources/idm-service/resources/css/bootstrap-navbar.css" rel="stylesheet">
+	<link href="resources/idm-service/resources/css/main.css" rel="stylesheet">
+	<link href="resources/idm-service/resources/css/responsive.css" rel="stylesheet">
+	<link href="resources/css/bootstrap-navbar.css" rel="stylesheet">
+	<link href="resources/css/general.css" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="resources/api_favicon.png">
+	<link rel="stylesheet" type="text/css" href="resources/css/slick.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/slick-theme.css" />
+
+
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+		integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="resources/css/menu.css">
+	<link rel="stylesheet" href="resources/css/footer.css">
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+	<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+	<link rel="stylesheet" type="text/css" href="resources/css/xlerate-old.css" />
+
+
+
+
+	<style>
+
+	</style>
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+	<div class="fixpage">
+		<nav include-html="menu.html" id="menu_file" class="navbar navbar-default navbar-fixed-top  "></nav>
+
+		<section class="main-content dis-block clearfix">
+			<div class="top-logo">
+				<div class="image-top-logo">
+					<img src="resources/images/xlerate-top-logo.jpg" alt="xlerate">
+					<p><em>The Market Data Analysis Software</em></p>
+				</div>
+			</div>
+			<div class="info-monitor">
+				<div class="big-blue-title"><strong>Overview</strong></div>
+
+				<p>Sarus XLerate is a powerful, easy to use Excel add-in that can provide a comprehensive end-of-day
+					market data solution for your trading and analytic needs. It integrates seamlessly into Excel
+					enabling you to create amazing market data reports with just a few mouse clicks - and from virtually
+					anywhere, 24/7. </p>
+				<p>There are no cryptic exchange symbols to remember and you can create detailed market data charts that
+					allow zoom and scroll with a single mouse click. Controlling the chart is simple with the XLerate
+					built in dialogs. </p>
+				<p>There are over 40 built-in analytic “Quick functions” that can be added to any data column for
+					further detailed analysis. Create reports in any frequency - day to year (including custom weeks,
+					half months and months). Choose date ranges, fill type, lead/lag, how weekends are handled and much
+					more.</p>
+				<p>Sarus XLerate gives unprecedented functionality and control and is suited to front, mid or back
+					office
+					roles where it can be used with ease by traders, analysts, data scientists and office staff.</p>
+				<p>If you can use Excel, you can use XLerate. </p>
+				<br>
+				<br>
+				<!-- <div class="xlerate-image">
+						<img src="resources/images/xlerate1.jpg" style=" margin: 10px;">
+						<p style="margin-top: 10px;">A sample quarterly average time series report with four XLerate quick functions (QF’s).</p>
+					</div> -->
+
+
+
+				<div class="swiper-Bigcontainer">
+					<div class="swiper-container mySwiper1">
+
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate1.jpg" />
+									<p> A quarterly average TS report showing market data and three quick function
+										columns.<br>
+										Use the arrow buttons to scroll or double click to view the image.</p>
+								</div>
+							</div>
+
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate_select1.png" />
+									<p>Easy "Point and Click" data selection with intuitive, easy to use dialogs.<br>
+										Use the arrow buttons to scroll or double click to view the image.</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate2.jpg" />
+									<p>A chart series editor dialog on a x4 zoomed report chart. Each line <br>
+										can have its visibility, type,colour, axis and style configured.</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate3.jpg" />
+									<p>A two panel report chart showing the underlying chart data and a two panel
+										chart.<br>
+										Use the arrow buttons to scroll or double click to view the image. </p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate4.jpg" />
+									<p>A Time Series Analysis report showing heatmaps and the selected panel properties
+										dialog. <br>
+										Use the arrow buttons to scroll or double click to view the image.</p>
+								</div>
+							</div>
+
+
+						</div>
+
+
+						<div class="swiper-pagination"></div>
+					</div>
+
+					<div class="swiper-button-next1 next"><i class="fas fa-arrow-right"></i></div>
+					<div class="swiper-button-prev1 prev"><i class="fas fa-arrow-left"></i></div>
+				</div>
+
+
+
+
+
+				<br>
+				<p>There are hundreds of thousands of reference data time series are available from stock exchanges,
+					commodity exchanges, banks, proprietary market data providers, independent pricing agencies as well
+					as global currencies, cryptocurrencies, world indices and more. We can also connect to your other
+					market data services and even integrate your own proprietary data in the service.</p>
+				<br>
+
+				<div class="big-blue-title"><strong>Reports</strong></div>
+				<br>
+				<p>XLerate has three main report types:
+					<ul>
+						<li><span class="sml-blue-title">Time Series</span> - select, display and chart any datasets in
+							standard Excel column format.</li>
+						<li><span class="sml-blue-title">Analytic</span> - predefined interactive reports to help you
+							quickly analyse and compare datasets.
+						</li>
+						<li><span class="sml-blue-title">Snapshot</span> - build quote style pages showing a snapshot of
+							any market on a particular date.
+						</li>
+					</ul>
+					<br>
+
+					All reports are saved as Excel workbooks to make sharing and updating by colleagues easy. Each
+					report type is explained in more detail in the sections below.</p>
+				<br>
+				<div class="blue-title"><strong>Time Series Reports</strong></div>
+				<!-- <p> Time Series (TS) reports display historical values for datasets and Quick Functions in Excel columns.
+					Select a number of data columns using the easy to navigate forms. You can transform the data by
+					selecting the frequency, date range and average (day to year and custom). You can choose how to
+					handle missing rows (previous, mid-point or interpolated) and much more. Time Series reports can be
+					instantly charted using the XLerate built in custom financial charts with a single click. </p> <br>
+					 <div class="xlerate-image">
+						<img src="resources/images/xlerate3.jpg" >
+						<p style="margin-top: 10px;">A chart worksheet section showing a two panel TA chart</p>					
+					</div><br> -->
+
+				<div class="swiper-Bigcontainer">
+					<div class="swiper-container mySwiper2">
+
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate/hr-report1.png" />
+									<p> A half-monthly average TS report showing market data columns, a quick
+										function column and a chart.<br>
+										Use the arrow buttons to scroll or double click to view the image.</p>
+
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate/hr-edit1.png" />
+									<p> Selecting the report market data columns with the easy to use XLerate point
+										and click interface.<br>
+										Use the arrow buttons to scroll or double click to view the image.</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate/hr-edit2.png" />
+									<p> Selecting the range, frequency, sparse and fill settings to use.<br>
+										Use the arrow buttons to scroll or double click to view the image.</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate/hr-edit3.png" />
+									<p> Choose the fill and post fill options. Use the "Advanced tab to set how
+										weekends are handled and any lead/lag to use.<br>
+										Use the arrow buttons to scroll or double click to view the image.</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate/hr-edit4.png" />
+									<p> A close up of a small standard chart. Use the XLerate dialogs to edit both
+										the charts and chart lines. Charts can be resized, zoomed and scrolled.<br>
+										Use the arrow buttons to scroll or double click to view the image.</p>
+								</div>
+							</div>
+
+
+						</div>
+
+
+						<div class="swiper-pagination"></div>
+					</div>
+
+					<div class="swiper-button-next2 next"><i class="fas fa-arrow-right"></i></div>
+					<div class="swiper-button-prev2 prev"><i class="fas fa-arrow-left"></i></div>
+				</div>
+
+				<p>Time Series reports can be refreshed and edited. Their market data can be automatically exported
+					to JSON files for easy inclusion in Business Intelligence systems like SaS™, Tableau™ and
+					Microsoft Bi™. For developers, market data can also be received directly via HTTP requests from
+					the Monitor+ market data API. XLerate itself uses the Monitor+ API to present and return market
+					data. Please refer to the Monitor+ API product page for more details regarding the API
+					functions. </p>
+				<p>Time Series Reports can be enhanced with drop-in Quick Functions (QF's). There are over 40
+					analytic QF's available and each can be added with just a few mouse clicks from the built in
+					menus. See the "Quick Function" section below for more details.</p>
+				<br>
+				<div class="time-series-area">
+					<div class="blue-title"><strong>Time Series Charts</strong></div>
+					<p>XLerate has beautifully detailed charts that can be resized, zoomed and scrolled along the
+						date
+						axis. You can plot any worksheet data series along the left or right value axis allowing
+						worksheet series with no obvious price relationship to be overlaid along same date axis.</p>
+					<p>Charts and plots can be edited with the built in XLerate dialogs and can be split allowing
+						four
+						price axis per chart. The chart date axis was designed for market data analysis and aligns
+						on
+						week, month and year boundaries. </p>
+				</div>
+
+				<br>
+				<div>
+
+
+					<div class="swiper-Bigcontainer">
+						<div class="swiper-container mySwiper3">
+
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="swiper-zoom-container">
+										<img src="resources/images/xlerate/ch-sample.png" />
+										<p>A simple zoomed time series chart.<br>Use arrow buttons to scroll. Double
+											click to view.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="swiper-zoom-container">
+										<img src="resources/images/xlerate/ch-sample2.png" />
+										<p>A simple zoomed time series chart legend axis arrows and custom date
+											axis.<br>Use arrow buttons to scroll. Double click to view.</p>
+									</div>
+								</div>
+
+								<div class="swiper-slide">
+									<div class="swiper-zoom-container">
+										<img src="resources/images/xlerate/ch-multi-axis.png" />
+										<p>Charts automatically adjust the date axis to suit the visible range.
+											Above are some date axis showing financial date formats.<br>Use arrow
+											buttons to scroll. Double click to view.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="swiper-zoom-container">
+										<img src="resources/images/xlerate/ch-controls.png" />
+										<p>Each chart can be zoomed and controlled from a single dialog.<br>Use
+											arrow buttons to scroll. Double click to view.</p>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<div class="swiper-zoom-container">
+										<img src="resources/images/xlerate/ch-series-controls.png" />
+										<p>Every chart series can have their settings (visibility, colour, type and
+											axis) changed from a single dialog.<br>Use arrow buttons to scroll.
+											Double click to view.</p>
+									</div>
+								</div>
+
+							</div>
+
+
+							<div class="swiper-pagination"></div>
+						</div>
+
+						<div class="swiper-button-next3 next"><i class="fas fa-arrow-right"></i></div>
+						<div class="swiper-button-prev3 prev"><i class="fas fa-arrow-left"></i></div>
+					</div>
+					<br>
+				</div>
+				<br><br>
+				<div class="blue-title"><strong>Analytic Reports</strong></div>
+				<p>XLerate has a number of built in interactive analytic reports and studies to help you quickly
+					analyse datasets. They include Time Series Analysis, Correlation Matrix, FX, Seasonality, ANOVA
+					and MACD. Each report contains three worksheets source, chart and report. </p>
+				<p> Analytic report charts can also be edited, scrolled and zoomed. You can choose which columns to
+					display in each. Many charts can display a data panel showing the chart values (see the top of
+					the image below). </p>
+
+				<p>Many analytic reports offer comparison between two contracts and the report worksheet sections
+					allow heat maps or high/low highlights by month or year (see the chart image in the carousel
+					below).</p>
+				<br>
+				<!-- <div class="xlerate-image">
+						<img src="resources/images/xlerate4.jpg" >
+						<p style="margin-top: 10px;">A TSA worksheet showing High/low and heatmap applied to report sections.  Also visible is a report section options dialog.</p>
+					</div> -->
+
+
+				<div class="swiper-Bigcontainer">
+					<div class="swiper-container mySwiper4">
+
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate/an-tsa-report.png" />
+									<p>Sample Time Series Analysis report showing the section heat map dialog.<br>
+										Use arrow buttons to scroll. Double click to view..</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate/an-seasonal-rep.png" />
+									<p>Sample Correlation report showing the Report Calculation Type dialog.<br>Use
+										arrow buttons to scroll. Double click to view.</p>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="resources/images/xlerate/an-chart-sheet.jpg" />
+									<p>Sample two panel RSI/Bollinger chart with data grid.<br>Use arrow buttons to
+										scroll. Double click to view.</p>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="swiper-pagination"></div>
+					</div>
+
+					<div class="swiper-button-next4 next"><i class="fas fa-arrow-right"></i></div>
+					<div class="swiper-button-prev4 prev"><i class="fas fa-arrow-left"></i></div>
+				</div>
+
+
+
+				<br><br>
+				<div class="blue-title"><strong>Snapshot Reports</strong></div>
+
+				<p>Snapshot reports allow you to build your own quote pages containing a number of contracts from
+					various datasources. The reports can contain average results as well as "Change" and "Sparkline"
+					data. The contracts for the report are stored in a source worksheet together with the API result
+					data and any sparkline values. You then create the display worksheet and reference the source
+					sheet value cells. If the sample report below, we show sample sparklines and have added the
+					option to allow the user to select contracts (using checkboxes) and to create a historical
+					report using the selected contracts. We provide sample code and a clear explanation on how to
+					create your own.</p>
+				<br>
+
+
+				<div class="w-100 px-5 mb-4">
+					<img class="img-fluid" style="width: 100%;" src="resources/images/day_report1.png"
+						alt="Day Report image 1">
+				</div>
+
+
+
+
+				<br>
+				<p>As well as fees for proprietary data, many data vendors have additional fees for their published
+					reports. If you subscribe to the vendors reports and their data service, it may be possible to
+					recreate these published reports using snapshot reports. You can replicate and improve on the
+					vendors report price tables. <br><br> Snapshot reports are always up to date with any published
+					corrections (at the time the reports were created or refreshed). They can be created for
+					virtually any date with the click of a button. We can help you get started with sample VBA code
+					and advice.</p>
+				<br>
+				<div class="big-blue-title"><strong>Quick functions</strong></div>
+
+
+
+
+				<p>XLerate has over 40 drop in “Quick Functions” ("QF") that allow you easily add analytic columns
+					to your worksheet data columns. These analytic functions are activated directly from the Excel
+					pop-up menu. With the QF editor, just select the source columns, click Ok and the QF is inserted
+					in a column next to the source column. Best of all the QF's can be edited and they update when
+					the worksheet refreshes. </p><br>
+				<div style="margin: auto; width: 70%;"><iframe id="iframe" width="700" height="315"
+						src="https://www.youtube.com/embed/thkaht_LilQ" title="YouTube video player" frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen></iframe>
+					<p style="text-align: center;">A YouTube video showing how easy it is to add two QF's to a
+						worksheet.</p>
+				</div><br>
+
+
+				<div class="grey-title">Some of the QF's that are available are:</div>
+				<!--			<p>Some of the QF’s that are available are: </p>  -->
+				<div class="four-table">
+					<div class="function-list">
+						<p>Average (mean)</p>
+						<p>Average Gain</p>
+						<p>Average Loss</p>
+						<p>Average Mean</p>
+						<p>Bernoulli Random Walk</p>
+						<p>Change (on previous) </p>
+						<p>Confidence Interval</p>
+					</div>
+					<div class="function-list">
+						<p>Correlation Coefficient</p>
+						<p>Crack Spreads</p>
+						<p>Detrend</p>
+						<p>Difference</p>
+						<p>Exponential Moving Average</p>
+						<p>Exponential Smoothing</p>
+						<p>Gaussian Random Walk</p>
+
+					</div>
+					<div class="function-list">
+						<p>Math Functions</p>
+						<p>Momentum</p>
+						<p>Percent Change</p>
+						<p>Rate of Change</p>
+						<p>Regression Linear</p>
+						<p>RSI</p>
+						<p>'R'-squared</p>
+
+					</div>
+					<div class="function-list">
+						<p>Seasonal Adjustment</p>
+						<p>Seasonal Index</p>
+						<p>Simple Moving Average</p>
+						<p>Spread</p>
+						<p>Standard Deviation</p>
+						<p>Weighted Moving Average</p>
+						<p></p>
+
+					</div>
+				</div>
+				<br>
+				<br>
+
+
+				<!--						<div class="blue-title"><strong>Analytic Reports</strong></div>   -->
+
+				<div class="big-blue-title">And much more...</div>
+				<p>XLerate can do so much more for your company and colleagues than can be described in these pages.
+					With XLerate, your company can make significant savings on both software and market data costs while
+					gaining an extremely powerful, easy to use analytic tool to help leverage greater value from your
+					data. </p>
+				<p>If you wish to power business information system (BIS) solutions, internal reports,integrate with
+					3rd party software or create your own market data databases then you should consider the
+					Monitor+ API, The API is extremely powerful and provides the market data that you
+					need. You can request market data in JSON format and works with virtually all
+					programming languages. It has "R" and Python packages for fast and easy native access.
+					With just two lines of code, developers can be receiving the market data to create the solutions
+					your company needs. Please refer to the Monitor+ API product page under the "Solutions" menu at the
+					top of the page for more information.</p>
+
+				<p>If you subscribe to exchanges or vendors not listed here then please contact us to talk about
+					adding this data to the Monitor+ service. </p>
+				<p>If your company would like a trial of XLerate, Monitor+ or have any questions then please get in
+					touch using the "Contact" menu at the top of the page.</p>
+				<br>
+			</div>
+		</section>
+
+
+		<!-- <div class="imageClose"><i class="fas fa-times imgc"></i></div> -->
+
+
+		<div class="modelView">
+
+			<i class="fas fa-times cross"></i>
+
+			<div class="model-content">
+
+				<img src="" style="border: 5px solid rgb(0, 0, 0);" />
+
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+		<!-- <div class="imageClose"><i class="fas fa-times imgc"></i></div> -->
+
+		<div class="blackbackground">
+
+		</div>
+
+		<div include-html="footer.html" id="footer_file" style="z-index: 1;"></div>
+		<div class="text-center footertxt">
+			<p class="sub-logo"> Copyright © 2018-2022 Sarus Systems Limited - Market Data Solutions </p>
+		</div>
+	</div>
+	</div>
+
+
+
+	<script type="text/javascript" src="resources/js/slick.min.js"></script>
+
+	<script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+	<script src="resources/js/include-html.js"></script>
+	<script src="resources/js/xlerate-old.js"></script>
+</body>
+
+</html>

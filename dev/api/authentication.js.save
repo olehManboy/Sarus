@@ -1,0 +1,86 @@
+async function call_api(api_method,method,args)
+{
+    console.log('pass here 1 '+api_method);
+    var ret = { status:400, details:'Internal error'};
+    var url = `${getBaseUrl()}${api_method}`;
+    if( axios[method]==undefined ) throw new Exception(`Method ${method} does not exist for axios object`);
+    return await axios[method](url,{ 
+    	    params:args,
+	    transformResponse: function (data) {
+		console.log('pass here 2 '+api_method);
+
+		eval('var obj='+data);
+		if( obj['Errors'] ) {
+		    ret.status= obj['Errors']['Status'];
+		    ret.details = obj['Errors']['Details'];
+		}
+    		return data;
+            }
+    	}
+    )
+    .then(function(res)
+    {
+    	eval('var ret = '+res.data);
+	console.log('pass here 3 '+api_method);
+    	
+        return { status:200, result: ret['Result'] } ;
+    }) 
+    .catch ( function(err) {
+	console.log('pass here 4 '+api_method);
+	console.log(err);
+	console.log(arguments);
+	return ret;
+    })
+}
+
+
+async function getSessionToken(id,l,p) 
+{
+    return await call_api('GetSessionToken','get',
+	{
+    	    UserReferenceNo:id,
+    	    Username:l,
+    	    Password:p
+    	}
+    );
+}
+
+
+async function call_api_command(method,command,args)
+{
+    var r = await call_api(command,method,args);
+    switch(r.status)
+    {
+	case 401:
+	    if(r.details != 'Unknown session token') break;
+	case 410:
+	    window.location.href = getMainSite();
+	break;
+	case 200:
+	    return r['result'];
+	break;
+	default:
+	    throw Error(r['details']);
+	break;
+    }
+}
+
+
+function getParameterByName(name) 
+{
+    url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+    if (!results) return '';
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+
+
+async function getUserName(st) {
+    const ud = await call_api_command('get','GetMyAccountDetails',{SessionToken:st});
+    return ud.Name;
+}
+

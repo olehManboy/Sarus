@@ -1,0 +1,51 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    margin: 0px;
+}
+
+.jstree-default .jstree-node,
+.jstree-default .jstree-icon {
+    background-image: none;
+}
+
+.jstree-default .jstree-closed>.jstree-ocl {
+    background-position: 0px 3px;
+    background-image: url(resources/jqwidgets/styles/images/metro-icon-right.png);
+    width: 18px;
+}
+
+.jstree-default .jstree-open>.jstree-ocl {
+    background-position: 0px 3px;
+    background-image: url(resources/jqwidgets/styles/images/metro-icon-down.png);
+    width: 18px;
+}
+
+.jstree-default .jstree-node {
+    min-height: 30px;
+    line-height: 30px;
+}
+
+#jstree_demo_div {
+    margin-top: 8px;
+    overflow: hidden;
+}
+
+#leftPane {
+    width: 200px;
+    height: 100%;
+    overflow: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#leftPane::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#leftPane {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
