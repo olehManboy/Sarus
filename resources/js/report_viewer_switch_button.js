@@ -2417,6 +2417,50 @@ window.onload = function () {
             }
         });
 
+        $("#btnRequestRefreshJson").jqxButton({
+            imgSrc: "resources/css/icons/report-dn.png",
+            imgPosition: "left",
+            width: 45,
+            height: 24,
+            imgWidth: 34,
+            imgHeight: 16,
+            textPosition: "right"
+        });
+        $("#btnRequestRefreshJson").css("border-color", "#ddd").css("box-shadow", "0px 0 2px rgb(0 0 0 / 25%)");
+        
+        $("#btnRequestRefreshJson").on('click', function () {
+            var jsonObj = getJsonTree(request_editor);
+            var notesObj = getJsonTree(notes_editor);
+            var userObj = getJsonTree(user_editor);
+            if(jsonObj == undefined || Object.keys(jsonObj).length == 0){
+                dialogWindow("No Report data has been loaded.", "error");
+            }
+            else{
+                if(jsonObj != undefined && notesObj != undefined && userObj != undefined){
+                    if(jsonObj.Frequency != undefined && jsonObj.Series != undefined){
+                        var reportJSON = {
+                            ReportJSON: jsonObj,
+                            Notes: notesObj,
+                            UserJSON: userObj,
+                        };
+    
+                        
+                        var link = document.createElement('a');
+                        link.href = 'data:text/plain;charset=UTF-8,' + escape(JSON.stringify(reportJSON));
+                        link.download = 'request_'+report_name+'.SJR';
+                        link.click();
+    
+                        requestParameters = jsonObj;
+                        notesParameters = notesObj;
+                        userParameters = userObj;
+                    }
+                    else{
+                        dialogWindow("The selected file cannot be used.<br>It was not created with the 'Save JSON' function", "error");
+                    }                
+                }
+            }
+        });
+
         $("#fileupload").change(function(){
             var file_info = $('#fileupload').prop('files');
             var filename = file_info[0].name;

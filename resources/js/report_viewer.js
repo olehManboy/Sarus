@@ -212,27 +212,27 @@ window.onload = function () {
         $("#jqxExpander2").jqxExpander({ width: '100%', expanded: false});
         $("#jqxExpander3").jqxExpander({ width: '100%', expanded: false});
 
-        $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-        $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-        $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
+        $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+        $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+        $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
     });
 
     $('#jqxExpander2').on('expanded', function () {
         $("#jqxExpander1").jqxExpander({ width: '100%', expanded: false});
         $("#jqxExpander3").jqxExpander({ width: '100%', expanded: false});
         
-        $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-        $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-        $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
+        $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+        $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+        $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
     });
 
     $('#jqxExpander3').on('expanded', function () {
         $("#jqxExpander1").jqxExpander({ width: '100%', expanded: false});
         $("#jqxExpander2").jqxExpander({ width: '100%', expanded: false});
 
-        $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-        $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-        $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
+        $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+        $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+        $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
     }); 
 
     // Function to register the data
@@ -1570,23 +1570,23 @@ window.onload = function () {
 
     $("button.ui-button").click(function () {
         setTimeout(() => {
-            $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-            $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-            $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
+            $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+            $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+            $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
         }, 10);
     });
 
     function resizeElements() {
         var contentBottomPadding = parseInt($(".main-content").css("padding-bottom"));
-        $('#mainSplitter').css('min-height', (window.innerHeight - $(".navbar").height() - contentBottomPadding + 16) + 'px');
+        $('#mainSplitter').css('min-height', (window.innerHeight - contentBottomPadding + 16) + 'px');
         preHeaderColumnHeight = 0;
 
         setTimeout(() => {
             
             // $('#request-json-body').parent().css('height', parseInt($('#jqxTabs').height())-152);
-            $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-            $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
-            $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
+            $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+            $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+            $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
             // $('#response-json-display').parent().css('height', parseInt($('#jqxTabs').height())-40);
             $('#response-json-display').css('height', parseInt($('#jqxTabs').height())-77);
             $('#response-json-display pre').css('height', '100%');
@@ -2042,8 +2042,8 @@ window.onload = function () {
 					$('#jqxExpander2').css('display','block');
 					$('#jqxExpander3').css('display','block'); 
 					
-					$('#jqxExpander1').height( jqxExpander1Height - jqxExpander2Height - jqxExpander3Height );
-				   
+					$('#jqxExpander1').height( jqxExpander1Height - jqxExpander2Height - jqxExpander3Height);
+
            }
            else{
             
@@ -2056,11 +2056,11 @@ window.onload = function () {
 				  $('#jqxExpander3').css('display','none');   
 				  
 				  $('#jqxExpander1').height( jqxExpander1Height + jqxExpander2Height + jqxExpander3Height );		
-            
+
            }
-            
+
         });    
-                     
+
 
         // When select item from dropmenu
         $("#series_frequency_json").on('select', function (event) {
@@ -2466,6 +2466,50 @@ window.onload = function () {
             // dialogWindow("The report may have been changed.<br/>If you load a new report you my lose these changes.<br>Do you want to lose any changes", "query", "confirm", "Monitor+ - Allow Weekends", () => {
                 $('#fileupload').trigger('click');
             // }, null, null, { Ok: "Yes", Cancel: "No" });
+            }
+        });
+
+        $("#btnRequestRefreshJson").jqxButton({
+            imgSrc: "resources/css/icons/reload.png",
+            imgPosition: "left",
+            width: 45,
+            height: 24,
+            imgWidth: 34,
+            imgHeight: 16,
+            textPosition: "right"
+        });
+        $("#btnRequestRefreshJson").css("border-color", "#ddd").css("box-shadow", "0px 0 2px rgb(0 0 0 / 25%)");
+        
+        $("#btnRequestRefreshJson").on('click', function () {
+            var jsonObj = getJsonTree(request_editor);
+            var notesObj = getJsonTree(notes_editor);
+            var userObj = getJsonTree(user_editor);
+            if(jsonObj == undefined || Object.keys(jsonObj).length == 0){
+                dialogWindow("No Report data has been loaded.", "error");
+            }
+            else{
+                if(jsonObj != undefined && notesObj != undefined && userObj != undefined){
+                    if(jsonObj.Frequency != undefined && jsonObj.Series != undefined){
+                        var reportJSON = {
+                            ReportJSON: jsonObj,
+                            Notes: notesObj,
+                            UserJSON: userObj,
+                        };
+    
+                        
+                        var link = document.createElement('a');
+                        link.href = 'data:text/plain;charset=UTF-8,' + escape(JSON.stringify(reportJSON));
+                        link.download = 'request_'+report_name+'.SJR';
+                        link.click();
+    
+                        requestParameters = jsonObj;
+                        notesParameters = notesObj;
+                        userParameters = userObj;
+                    }
+                    else{
+                        dialogWindow("The selected file cannot be used.<br>It was not created with the 'Save JSON' function", "error");
+                    }                
+                }
             }
         });
 
