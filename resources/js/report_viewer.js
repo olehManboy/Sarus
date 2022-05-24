@@ -16,6 +16,7 @@ window.onload = function () {
     $.jqx.utilities.scrollBarSize = 11;
 
     // Define all variables
+    var simpleViewChecked = 1;
     var toggleMetaData = 1,
         requestedTab = getParameterByName('tab'),
         report_id = getParameterByName('report_id'),
@@ -61,6 +62,7 @@ window.onload = function () {
         preHeaderColumnHeight = 0,
         reportsList = [],
         selectReportIndex = -1;
+        fullWidthFlag = true;
 
     // window.addEventListener('click', function(){
     //     var isOpen = $('#loginForm').jqxWindow('isOpen');
@@ -204,9 +206,14 @@ window.onload = function () {
     //     logout();
     // });
 
-    $("#jqxExpander1").jqxExpander({ width: '100%', expanded: true});
-    $("#jqxExpander2").jqxExpander({ width: '100%', expanded: false});
-    $("#jqxExpander3").jqxExpander({ width: '100%', expanded: false});
+    var navheight =  parseInt($('#jqxTabs').height())-170;
+    $("#jqxnavigationbar").jqxNavigationBar({ height: "auto", theme: 'summer' });
+
+    // $('#request-json-display').parent().css('height',);
+
+    // $("#jqxExpander1").jqxExpander({ width: '100%', expanded: true});
+    // $("#jqxExpander2").jqxExpander({ width: '100%', expanded: false});
+    // $("#jqxExpander3").jqxExpander({ width: '100%', expanded: false});
 
     $('#jqxExpander1').on('expanded', function () {
         $("#jqxExpander2").jqxExpander({ width: '100%', expanded: false});
@@ -404,7 +411,7 @@ window.onload = function () {
             } else {
                 enterDate(data.Result, reportJson.Frequency); // Register the data
                 delete reportJson["SessionToken"]
-                request_editor.load(reportJson);                
+                request_editor.load(reportJson);     
                 // $('#response-json-display').jsonViewer(data.Result, {collapsed: true});
                 response_viewer.showJSON(data.Result, null, 1);
                 response_json = data.Result;
@@ -817,7 +824,6 @@ window.onload = function () {
                                         parameters.FrequencyOptions= {
                                             AllowWeekends:"off"
                                         }
-    
                                         ShowJSReport(parameters);
                                         // updateChart(rowsData, isChartLoaded, isSubChartLoaded, columns);
                                         $("#jqxLoader").jqxLoader('close');
@@ -830,7 +836,6 @@ window.onload = function () {
                                         parameters.FrequencyOptions= {
                                             AllowWeekends:"on"
                                         }
-                                        
                                         ShowJSReport(parameters);
                                         // updateChart(rowsData, isChartLoaded, isSubChartLoaded, columns);
                                         $("#jqxLoader").jqxLoader('close');
@@ -904,14 +909,21 @@ window.onload = function () {
             name: 'movieTooltip'
         });
 
-        $("#fullWidth1").jqxButton({
-            imgSrc: "resources/css/icons/fullscreen.png",
-            imgPosition: "center",
-            width: 25,
-            height: 24,
-            imgWidth: 16,
-            imgHeight: 16
-        });
+        // 2022 5 23 3:09
+        function refreshFullWidth1() {
+            let img1 = (fullWidthFlag) ? 'fullscreen' : 'fullscreen1';
+            $("#fullWidth1").jqxButton({
+                imgSrc: "resources/css/icons/" + img1 + ".png",
+                imgPosition: "left",
+                width: 24,
+                height: 24,
+                textPosition: "right"
+            });
+            console.log(img1);
+        }
+
+        refreshFullWidth1();
+
         $("#fullWidth1").jqxTooltip({
             content: 'Toggle grid to full screen width',
             position: 'mouse',
@@ -989,9 +1001,8 @@ window.onload = function () {
             resizeColumns(grid);            
         });
 
-        fullWidthFlag = true;
         $("#fullWidth1").on('click', function () {
-            let img = (fullWidthFlag) ? 'fullscreen1' : 'fullscreen';
+            let img = (fullWidthFlag) ? 'fullscreen' : 'fullscreen1';
 
             $("#fullWidth1").jqxButton({
                 imgSrc: "resources/css/icons/" + img + ".png",
@@ -1577,16 +1588,22 @@ window.onload = function () {
     });
 
     function resizeElements() {
+        
         var contentBottomPadding = parseInt($(".main-content").css("padding-bottom"));
         $('#mainSplitter').css('min-height', (window.innerHeight - contentBottomPadding + 16) + 'px');
         preHeaderColumnHeight = 0;
-
         setTimeout(() => {
-            
+            var txtheight = parseInt($("#tabnote").css("height")) + 10;
+            // $("#jqxnavigationbar").css('height',)
             // $('#request-json-body').parent().css('height', parseInt($('#jqxTabs').height())-152);
-            $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
-            $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
-            $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-210);
+            if (simpleViewChecked) {
+                $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-205);
+            }else{
+                $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-260);
+                $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-260);
+                $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-260);
+            }
+           
             // $('#response-json-display').parent().css('height', parseInt($('#jqxTabs').height())-40);
             $('#response-json-display').css('height', parseInt($('#jqxTabs').height())-77);
             $('#response-json-display pre').css('height', '100%');
@@ -1614,6 +1631,38 @@ window.onload = function () {
 
             $("#bottomSplitter").parent().css("height", "100%");
         }, 150); 
+
+        // 2022 5 23 3:09
+        setTimeout(() => {
+            let img1 = (fullWidthFlag) ? 'fullscreen' : 'fullscreen1';
+            $("#fullWidth1").jqxButton({
+                imgSrc: "resources/css/icons/" + img1 + ".png",
+                imgPosition: "left",
+                width: 24,
+                height: 24,
+                textPosition: "right"
+            });
+            console.log(img1);
+
+            let img2 = (fullWidthFlag) ? 'fullscreen' : 'fullscreen1';
+            $("#fullWidth").jqxButton({
+                imgSrc: "resources/css/icons/" + img2 + ".png",
+                imgPosition: "left",
+                width: 24,
+                height: 24,
+                textPosition: "right"
+            });
+
+            let img3 = (fullWidthFlag) ? 'fullscreen' : 'fullscreen1';
+            $("#ResultfullWidth").jqxButton({
+                imgSrc: "resources/css/icons/" + img3 + ".png",
+                imgPosition: "left",
+                width: 24,
+                height: 24,
+                textPosition: "right"
+            });
+
+        }, 50);
     }
 
     $(window).resize(function () {
@@ -2014,12 +2063,17 @@ window.onload = function () {
                 }
             }
         });
+
+        // Handle request-json-body
+        // $('#request-json-body').parent().css('height', parseInt($('#jqxTabs').height())-152);
+        // console.log(parseInt($('#jqxTabs').height()));
+        // console.log(parseInt($('#request-json-body').height()));
         
         // Simple View Stuff
         $('#simpleView').jqxCheckBox({ height: 24, width: 47,  checked: true });       
 
 
-        var simpleViewChecked = 1;
+        
         var jqxExpander1Height = $('#jqxExpander1').height();
         var jqxExpander2Height = $('#jqxExpander2').height();
         var jqxExpander3Height = $('#jqxExpander3').height();
@@ -2033,29 +2087,42 @@ window.onload = function () {
         $('#simpleView').on('change', function (event) {            
 
            if(simpleViewChecked == 1){
-            
 					simpleViewChecked = 0;
-					jqxExpander1Height = $('#jqxExpander1').height();
-					jqxExpander2Height = $('#jqxExpander2').height();
-					jqxExpander3Height = $('#jqxExpander3').height();
+					// jqxExpander1Height = $('#jqxExpander1').height();
+					// jqxExpander2Height = $('#jqxExpander2').height();
+					// jqxExpander3Height = $('#jqxExpander3').height();
 					
-					$('#jqxExpander2').css('display','block');
-					$('#jqxExpander3').css('display','block'); 
+					// $('#jqxExpander2').css('display','block');
+					// $('#jqxExpander3').css('display','block'); 
 					
-					$('#jqxExpander1').height( jqxExpander1Height - jqxExpander2Height - jqxExpander3Height);
+					// $('#jqxExpander1').height( jqxExpander1Height - jqxExpander2Height - jqxExpander3Height);
+
+                    $('#tabName').css('opacity', '1');
+
+                    $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-260);
+                    $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-260);
+                    $('#user-json-display').parent().css('height', parseInt($('#jqxTabs').height())-260);
+
+                    $("#tabnote").css("display",'block');
+                    $("#tabuser").css("display",'block');
 
            }
            else{
-            
+
 				  simpleViewChecked = 1;
-				  jqxExpander1Height = $('#jqxExpander1').height();
-				  jqxExpander2Height = $('#jqxExpander2').height();
-				  jqxExpander3Height = $('#jqxExpander3').height();
+				//   jqxExpander1Height = $('#jqxExpander1').height();
+				//   jqxExpander2Height = $('#jqxExpander2').height();
+				//   jqxExpander3Height = $('#jqxExpander3').height();
 				  
-				  $('#jqxExpander2').css('display','none');
-				  $('#jqxExpander3').css('display','none');   
+				//   $('#jqxExpander2').css('display','none');
+				//   $('#jqxExpander3').css('display','none');   
 				  
-				  $('#jqxExpander1').height( jqxExpander1Height + jqxExpander2Height + jqxExpander3Height );		
+				//   $('#jqxExpander1').height( jqxExpander1Height + jqxExpander2Height + jqxExpander3Height );	
+                $('#tabName').css('opacity', '0');
+
+                $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-205);
+                $("#tabnote").css("display",'none');
+                $("#tabuser").css("display",'none');	
 
            }
 
@@ -2085,7 +2152,7 @@ window.onload = function () {
         $("#btnRequestLoadReport").jqxButton({
             imgSrc: "resources/css/icons/fileopen.png",
             imgPosition: "left",
-            width: 100,
+            width: 65,
             height: 24,
             textPosition: "right"
         });
@@ -2116,7 +2183,7 @@ window.onload = function () {
         $("#btnRequestSaveReport").jqxButton({
             imgSrc: "resources/css/icons/filesave.png",
             imgPosition: "left",
-            width: 100,
+            width: 60,
             height: 24,
             textPosition: "right"
         });
@@ -2412,7 +2479,7 @@ window.onload = function () {
         });
         $("#btnRequestSaveJson").css("border-color", "#ddd").css("box-shadow", "0px 0 2px rgb(0 0 0 / 25%)");
         
-        $("#btnRequestSaveJson").on('click', function () {
+        $("#btnRequestSave").on('click', function () {
             var jsonObj = getJsonTree(request_editor);
             var notesObj = getJsonTree(notes_editor);
             var userObj = getJsonTree(user_editor);
@@ -2455,7 +2522,7 @@ window.onload = function () {
         });
         $("#btnRequestReadJson").css("border-color", "#ddd").css("box-shadow", "0px 0 2px rgb(0 0 0 / 25%)");
         
-        $("#btnRequestReadJson").on('click', function () {
+        $("#btnRequestRead").on('click', function () {
             if(getSession() == undefined || getSession() == ""){
                 $('body').addClass('overlay');
                 $('#loginPopup').jqxWindow('open');
@@ -2480,76 +2547,6 @@ window.onload = function () {
         });
         $("#btnRequestRefreshJson").css("border-color", "#ddd").css("box-shadow", "0px 0 2px rgb(0 0 0 / 25%)");
         
-        $("#btnRequestRefreshJson").on('click', function () {
-            var jsonObj = getJsonTree(request_editor);
-            var notesObj = getJsonTree(notes_editor);
-            var userObj = getJsonTree(user_editor);
-            if(jsonObj == undefined || Object.keys(jsonObj).length == 0){
-                dialogWindow("No Report data has been loaded.", "error");
-            }
-            else{
-                if(jsonObj != undefined && notesObj != undefined && userObj != undefined){
-                    if(jsonObj.Frequency != undefined && jsonObj.Series != undefined){
-                        var reportJSON = {
-                            ReportJSON: jsonObj,
-                            Notes: notesObj,
-                            UserJSON: userObj,
-                        };
-    
-                        
-                        var link = document.createElement('a');
-                        link.href = 'data:text/plain;charset=UTF-8,' + escape(JSON.stringify(reportJSON));
-                        link.download = 'request_'+report_name+'.SJR';
-                        link.click();
-    
-                        requestParameters = jsonObj;
-                        notesParameters = notesObj;
-                        userParameters = userObj;
-                    }
-                    else{
-                        dialogWindow("The selected file cannot be used.<br>It was not created with the 'Save JSON' function", "error");
-                    }                
-                }
-            }
-        });
-
-        $("#fileupload").change(function(){
-            var file_info = $('#fileupload').prop('files');
-            var filename = file_info[0].name;
-            if(filename.substr(filename.length-3) !== "SJR"){
-                dialogWindow("wrong file!");
-            }
-            else{
-                var fr = new FileReader();
-                fr.addEventListener('load', (event) => {
-                    const result = getJson(event.target.result);
-                    if(result != undefined && result.ReportJSON != undefined && result.Notes != undefined && result.UserJSON != undefined){
-                        if(result.ReportJSON.Frequency != undefined && result.ReportJSON.Series != undefined){
-                            ShowJSReport(result.ReportJSON);
-                            notes_editor.load(result.Notes);
-                            user_editor.load(result.UserJSON);
-                            gridColumndraw();
-                            grid.setColumns(columns);
-                            CreateAddPreHeaderRow();
-                        }
-                        else{
-                            dialogWindow("The selected file cannot be used. <br/>It was not created  with the 'Save JSON' function", "error");
-                        }                        
-                    }
-                });
-                fr.readAsText(file_info[0], 'UTF-8');
-            }
-        });
-
-        $("#btnRefresh").jqxButton({
-            imgSrc: "resources/css/icons/reload.png",
-            imgPosition: "left",
-            width: 24,
-            height: 24,
-            textPosition: "right"
-        });
-        $("#btnRefresh").css("border-color", "#ddd").css("box-shadow", "0px 0 2px rgb(0 0 0 / 25%)");
-
         $("#btnRefresh").on('click', function () {
             if(getSession() == undefined || getSession() == ""){
                 $('body').addClass('overlay');
@@ -2613,13 +2610,106 @@ window.onload = function () {
                 }
             }
         });
+
+
+        $("#fileupload").change(function(){
+            var file_info = $('#fileupload').prop('files');
+            var filename = file_info[0].name;
+            if(filename.substr(filename.length-3) !== "SJR"){
+                dialogWindow("wrong file!");
+            }
+            else{
+                var fr = new FileReader();
+                fr.addEventListener('load', (event) => {
+                    const result = getJson(event.target.result);
+                    if(result != undefined && result.ReportJSON != undefined && result.Notes != undefined && result.UserJSON != undefined){
+                        if(result.ReportJSON.Frequency != undefined && result.ReportJSON.Series != undefined){
+                            ShowJSReport(result.ReportJSON);
+                            notes_editor.load(result.Notes);
+                            user_editor.load(result.UserJSON);
+                            gridColumndraw();
+                            grid.setColumns(columns);
+                            CreateAddPreHeaderRow();
+                        }
+                        else{
+                            dialogWindow("The selected file cannot be used. <br/>It was not created  with the 'Save JSON' function", "error");
+                        }                        
+                    }
+                });
+                fr.readAsText(file_info[0], 'UTF-8');
+            }
+        });
+
+        // 2022 5 23 3:09
+        function refreshFullWidth() {
+
+            let img2 = (fullWidthFlag) ? 'fullscreen' : 'fullscreen1';
+            $("#fullWidth").jqxButton({
+                imgSrc: "resources/css/icons/" + img2 + ".png",
+                imgPosition: "left",
+                width: 24,
+                height: 24,
+                textPosition: "right"
+            });
+        }
+        refreshFullWidth();
+
+        $("#fullWidth").css("border-color", "#ddd").css("box-shadow", "0px 0 2px rgb(0 0 0 / 25%)");
+
+        $("#fullWidth").on('click', function () {
+            let img = (fullWidthFlag) ? 'fullscreen' : 'fullscreen1';
+
+            $("#fullWidth").jqxButton({
+                imgSrc: "resources/css/icons/" + img + ".png",
+                imgPosition: "left",
+                width: 25,
+                textPosition: "right"
+            });
+            $(".fixpage").toggleClass('fullscreen', fullWidthFlag);
+            $("section .wrap").toggleClass('fullscreen', fullWidthFlag);
+
+            fullWidthFlag = !fullWidthFlag;
+            window.dispatchEvent(new Event('resize'));
+        });
         
+        // 2022 5 23 3:09
+        function refreshResultFullWidth() {
+
+            let img3 = (fullWidthFlag) ? 'fullscreen' : 'fullscreen1';
+            $("#ResultfullWidth").jqxButton({
+                imgSrc: "resources/css/icons/" + img3 + ".png",
+                imgPosition: "left",
+                width: 24,
+                height: 24,
+                textPosition: "right"
+            });
+        }
+
+        refreshResultFullWidth();
+        $("#ResultfullWidth").css("border-color", "#ddd").css("box-shadow", "0px 0 2px rgb(0 0 0 / 25%)");
+
+        $("#ResultfullWidth").on('click', function () {
+            let img = (fullWidthFlag) ? 'fullscreen1' : 'fullscreen';
+
+            $("#ResultfullWidth").jqxButton({
+                imgSrc: "resources/css/icons/" + img + ".png",
+                imgPosition: "left",
+                width: 25,
+                textPosition: "right"
+            });
+            $(".fixpage").toggleClass('fullscreen', fullWidthFlag);
+            $("section .wrap").toggleClass('fullscreen', fullWidthFlag);
+
+            fullWidthFlag = !fullWidthFlag;
+            window.dispatchEvent(new Event('resize'));
+        });
+
         $("#btnResponseSaveJson").jqxButton({
             imgSrc: "resources/css/icons/report-dn.png",
             imgPosition: "left",
-            width: 45,
+            width: 24,
             height: 24,
-            imgWidth: 34,
+            imgWidth: 16,
             imgHeight: 16,
             textPosition: "right"
         });

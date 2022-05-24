@@ -245,6 +245,9 @@
     <script src="resources/jqwidgets/jqxtooltip.js" async></script>
     <script src="resources/jqwidgets/jqxwindow.js"></script>
     <script src="resources/jqwidgets/jqxnotification.js" async></script>
+
+    <script src="resources/jqwidgets/jqxnavigationbar.js"></script>
+
     <script src="resources/js/jquery.event.drag-2.3.0.js" async></script>
 
     <script src="resources/js/slick.core.js"></script>
@@ -432,7 +435,8 @@
 			.right-toolbar-content .dropdown-btn  {
 				box-shadow: rgb(0 0 0 / 25%) 0px 0px 2px;			
 				border: 1px solid #dddd;
-				border-radius: 7px;
+				border-radius: 3px;
+                height: 25px;
 			}	
 									
 			.right-toolbar-content .dropdown-item li {
@@ -596,7 +600,7 @@
                                     <div>
                                         <div id="pricesSplitter">
                                             <div>
-                                                <div id='seriesToolbar' style="height:36px;">
+                                                <div id='seriesToolbar' style="height:36px; padding-top: 1px !important; background-color: #fff;">
                                                     <div id='series_frequency' style="margin-right:8px;"></div>
                                                     <input class="btnlayers left-toolbar-button" id="btnLayout1" type="button">
                                                     <input class="btnlayers left-toolbar-button" id="btnLayout2" type="button">
@@ -604,9 +608,9 @@
                                                     <button id="decimal" class="left-toolbar-button">
                                                         <span id="decimal-style">0</span>.<span id="decimalContent">00</span>
                                                     </button>
-                                                    <div id="right-toolbar-content">
+                                                    <div id="right-toolbar-content" style="margin-right: 10px">
                                                         <div id="hideDropdown" class="right-toolbar-button hideDropdown_arrow"></div>
-                                                        <input class="btnlayers" id="btnAutosizeSeries" class="right-toolbar-button" type="button" style="margin-right:7px">
+                                                        <input class="btnlayers" id="btnAutosizeSeries" class="right-toolbar-button" type="button" style="margin-right:10px">
                                                         <input class="btnlayers" id="fullWidth1" class="right-toolbar-button" type="button">
                                                     </div>
                                                 </div>
@@ -727,10 +731,11 @@
                                 </div>
                             </div>
                             <div>
-                                <div id='responseToolbar' style="height:36px; border-bottom:1px solid #ddd">
+                                <div id='responseToolbar' style="height:36px; border-bottom:1px solid #ddd; background-color: #fff;">
                                     <input id="btnResponseSaveJson" title="Save the current JSON in a local Report file (*.SJR)">
-                                    <div class="right-toolbar-content" style="margin-right: 22px">
-                                        <input id="btnResponseRefresh" title="Refresh the report values" style="margin-right: 6px">
+                                    <div class="right-toolbar-content" style="margin-right: 12px">
+                                        <input id="btnResponseRefresh" title="Refresh the report values" style="margin-right: 10px">
+                                        <input id="ResultfullWidth" style="margin-right: 6px">
                                     </div>
                                 </div>
                                 <div>
@@ -740,21 +745,21 @@
                             </div>
                             <div>
                                 <div id='requestToolbar' style="height:36px; background-color:#fff">
-												
-                                    <div id='series_frequency_json' style="margin-right:8px;"></div>
+                                    <input id="btnRequestLoadReport" title="Load a report from the server" style="margin-left:10px;" value="Load">
+                                    <input id="btnRequestSaveReport" title="Save this report on the server" style="margin-left:10px;" value="Save">
+                                    <input type="file" id="fileupload" style="display:none" accept=".SJR"/>
                                     <div class="settings-edit" style="margin-left:10px">
 
                                     </div>
-                                    <input id="btnRequestLoadReport" title="Load a report from the server" style="margin-left:10px;" value="Load Report">
-                                    <input id="btnRequestSaveReport" title="Save this report on the server" style="margin-left:10px;" value="Save Report">
-                                    <input type="file" id="fileupload" style="display:none" accept=".SJR"/>
-                                 <div class="right-toolbar-content" style="margin-right: 22px">
+                                    <p style="margin-right: 10px;">Frequency:</p>
+                                    <div id='series_frequency_json' style="margin-right:8px;"></div>
+                                 <div class="right-toolbar-content" style="margin-right: 12px">
                                  
                                  
                                 
 <ul class="nav-menu">
-    <li class="nav-item dropdown-btn dropdown-btn1001" style="position: absolute;right: 100px;"><a class="nav-link"><img src="/resources/css/icons/setting_16.png"> <i class="fas fa-caret-down"></i></a>
-        <ul class="dropdown-item"  style="left: auto !important; right: 0 !important;">
+    <li class="nav-item dropdown-btn dropdown-btn1001" style="position: absolute;right: 85px; top: 40px;"><a class="nav-link"><img src="/resources/css/icons/setting_16.png" style="margin-bottom: 4px;"> <i class="fas fa-caret-down"></i></a>
+        <ul class="dropdown-item"  style="left: auto !important; right: 0 !important; min-width: 170px;">
             <li class="nav-item" style="text-align: center; vertical-align: middle;"><a class="nav-link headerMenu" href="javascript:0;" id="menu1" role="">
 					<input type="checkbox" id="allowEdit" title="Allow Editing">         
 					<img src="/resources/css/icons/pencil_edit.png" alt="Allow Editing" style="display: inline-block; float: left; margin-top: 3px;">                         
@@ -763,13 +768,13 @@
             <li class="nav-item " style="text-align: center; vertical-align: middle;"><a class="nav-link headerMenu" href="javascript:0;" id="menu2" role="">
 					<input type="checkbox" id="simpleView" title="Simple View">
                <span id="" style="display: inline-block; float: left; margin-top: 3px;">Simple View</span></a></li>
-            <li class="nav-item" style="padding-left: 20px; vertical-align: middle; border-top: 1px solid #dddd;"><a class="nav-link headerMenu" href="javascript:0;" id="menu3" role="">
+            <li class="nav-item" style="padding-left: 20px; vertical-align: middle;" id="btnRequestSave"><a class="nav-link headerMenu" href="javascript:0;" id="menu3" role="">
 					<input id="btnRequestSaveJson" title="Save the current JSON in a local Report file (*.SJR)" style="margin-right:10px;">Export Request
             </a></li> 
-            <li class="nav-item" style="padding-left: 20px; vertical-align: middle;"><a class="nav-link headerMenu" href="javascript:0;" id="menu4" role="">
+            <li class="nav-item" style="padding-left: 20px; vertical-align: middle;" id="btnRequestRead"><a class="nav-link headerMenu" href="javascript:0;" id="menu4" role="">
 					<input id="btnRequestReadJson" title="Load a local JSON Report file (*.SJR)" style="margin-right:15px;">Import Request</a></li>
-            <li class="nav-item" style="padding-left: 20px; vertical-align: middle; border-top: 1px solid #dddd;"><a class="nav-link headerMenu" href="javascript:0;" id="menu5" role="">
-                    <input id="btnRequestRefreshJson" title="Save the current JSON in a local Report file (*.SJR)" style="margin-right:10px;">Refresh Values
+            <li class="nav-item" style="padding-left: 20px; vertical-align: middle;" id="btnRefresh"><a class="nav-link headerMenu" id="menu5" role="">
+                    <input id="btnRequestRefreshJson" title="Refresh the report values" style="margin-right:10px;">Refresh Values
             </a></li>                                       
                     
         </ul>
@@ -778,16 +783,36 @@
 
 
 
-
-                                        <input id="btnRefresh" title="Refresh the report values" style="margin-right: 6px">
-                                        <div id="fav-help-div" style="margin-left: 5px">
+                                        <div id="fav-help-div" style="margin-right: 10px">
                                             <!-- <input id="fav-help" type="button" value=""> -->
                                             <a href="/api-docs#getdatasetvaluesrc" target="_blank"><img src="resources/css/icons/help_24.png" title="Help for GetValuesRC API endpoint" id="fav-help" style="border:0"></a>
                                         </div>
+                                        <input id="fullWidth" style="margin-right: 6px">
                                     </div>
                                 </div>
-                               
-                                <div id='jqxExpander1' style="height: calc( 100% - 169px );">
+                                <!-- 2022.5.21 11 Start-->
+                                <div id='jqxnavigationbar'>
+                                    <!--Header-->
+                                    <div id="tabName" style="color:#555!important; opacity: 0;background-color: #f1f1f1;">
+                                        Report JSON</div>
+                                    <!--Content-->
+                                    <div id="request-json-body">
+                                        <pre id="request-json-display" style="height:100%; margin-bottom:0px"></pre>
+                                    </div>   
+                                    <!--Header-->
+                                    <div id="tabnote" style="color:#555!important;display: none;background-color: #f1f1f1;">Notes</div>
+                                    <div id="notes-json-body">
+                                        <pre id="notes-json-display" style="height:100%; background-color: white"></pre>
+                                    </div>   
+                                    <!--Header-->
+                                     <div id="tabuser" style="color:#555!important;display: none;background-color: #f1f1f1;">User JSON</div>
+                                    <div id="user-json-body">
+                                        <pre id="user-json-display" style="height:100%; background-color:#b3b3b3"></pre>
+                                    </div>  
+                                </div>
+                                <!-- End -->
+
+                                <!-- <div id='jqxExpander1' style="height: calc( 100% - 169px );">
                                     <div id="tabName" style="color:#555!important">Report JSON 
 
                                     <div id='series_frequency_json' style="margin-right:8px;"></div>
@@ -808,7 +833,7 @@
                                     <div id="user-json-body">
                                         <pre id="user-json-display" style="height:100%; background-color:#b3b3b3"></pre>
                                     </div>                                    
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -944,7 +969,7 @@
 			document.getElementsByTagName('head')[0].appendChild(scriptElem);
         }
 
-		setTimeout("loadScript('resources/js/report_viewer.js');", 100);
+		setTimeout("loadScript('resources/js/report_viewer.js');", 200);
     </script>
 
     <script>

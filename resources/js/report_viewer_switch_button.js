@@ -4,7 +4,7 @@
 let parameters, requestParameters, notesParameters, userParameters, hideEmptyRows = false, allow_weekend = false, edit_flag = false, report_name, report_locked, report_type, request_editor, notes_editor, user_editor, response_viewer, response_json, columns;
 
 window.onload = function () {
-
+    console.log(123);
     setTimeout(hideloader, 2500); /* change the value "2000ms to any duration you want */
 
     //hide the preloader
@@ -1578,7 +1578,7 @@ window.onload = function () {
         preHeaderColumnHeight = 0;
 
         setTimeout(() => {
-            
+            console.log(6);
             // $('#request-json-body').parent().css('height', parseInt($('#jqxTabs').height())-152);
             $('#request-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
             $('#notes-json-display').parent().css('height', parseInt($('#jqxTabs').height())-195);
@@ -2414,50 +2414,6 @@ window.onload = function () {
             // dialogWindow("The report may have been changed.<br/>If you load a new report you my lose these changes.<br>Do you want to lose any changes", "query", "confirm", "Monitor+ - Allow Weekends", () => {
                 $('#fileupload').trigger('click');
             // }, null, null, { Ok: "Yes", Cancel: "No" });
-            }
-        });
-
-        $("#btnRequestRefreshJson").jqxButton({
-            imgSrc: "resources/css/icons/report-dn.png",
-            imgPosition: "left",
-            width: 45,
-            height: 24,
-            imgWidth: 34,
-            imgHeight: 16,
-            textPosition: "right"
-        });
-        $("#btnRequestRefreshJson").css("border-color", "#ddd").css("box-shadow", "0px 0 2px rgb(0 0 0 / 25%)");
-        
-        $("#btnRequestRefreshJson").on('click', function () {
-            var jsonObj = getJsonTree(request_editor);
-            var notesObj = getJsonTree(notes_editor);
-            var userObj = getJsonTree(user_editor);
-            if(jsonObj == undefined || Object.keys(jsonObj).length == 0){
-                dialogWindow("No Report data has been loaded.", "error");
-            }
-            else{
-                if(jsonObj != undefined && notesObj != undefined && userObj != undefined){
-                    if(jsonObj.Frequency != undefined && jsonObj.Series != undefined){
-                        var reportJSON = {
-                            ReportJSON: jsonObj,
-                            Notes: notesObj,
-                            UserJSON: userObj,
-                        };
-    
-                        
-                        var link = document.createElement('a');
-                        link.href = 'data:text/plain;charset=UTF-8,' + escape(JSON.stringify(reportJSON));
-                        link.download = 'request_'+report_name+'.SJR';
-                        link.click();
-    
-                        requestParameters = jsonObj;
-                        notesParameters = notesObj;
-                        userParameters = userObj;
-                    }
-                    else{
-                        dialogWindow("The selected file cannot be used.<br>It was not created with the 'Save JSON' function", "error");
-                    }                
-                }
             }
         });
 
